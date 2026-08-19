@@ -15,4 +15,6 @@ public:
 
     virtual std::expected<void, Error> Log(std::string_view message, ImportanceLevel level) = 0;
 
+    virtual void SetDefaultImportanceLevel(ImportanceLevel level) = 0;
+
 };
