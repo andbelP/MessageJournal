@@ -17,4 +17,6 @@ public:
 
     virtual void SetDefaultImportanceLevel(ImportanceLevel level) = 0;
 
+    virtual ~ILogger() = default
+
 };
