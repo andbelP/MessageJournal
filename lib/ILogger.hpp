@@ -1,8 +1,8 @@
 #pragma once
 
-#include <expected>
+#include <string_view>
 
-#include "Error.hpp"
+#include "ErrorCode.hpp"
 
 enum class ImportanceLevel {
     kHigh,
@@ -13,7 +13,7 @@ enum class ImportanceLevel {
 class ILogger {
 public:
 
-    virtual std::expected<void, Error> Log(std::string_view message, ImportanceLevel level) = 0;
+    virtual ErrorCode Log(std::string_view message, ImportanceLevel level) = 0;
 
     virtual void SetDefaultImportanceLevel(ImportanceLevel level) = 0;
 
