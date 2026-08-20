@@ -2,7 +2,7 @@
 
 #include <string_view>
 
-#include "ErrorCode.hpp"
+#include "ErrorHandling/ErrorCode.hpp"
 
 enum class ImportanceLevel {
     kHigh,

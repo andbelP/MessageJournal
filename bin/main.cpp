@@ -1,7 +1,7 @@
 // main.cpp = file for testing while developing
 
 #include <iostream>
-#include "ILogger.hpp"
+#include "ILogger/ILogger.hpp"
 
 int main(){
     

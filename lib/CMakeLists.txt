@@ -1,10 +1,14 @@
-add_library(Logger INTERFACE)
+add_library(Logger FileLogger/FileLogger.cpp)
 
 target_sources(
     Logger
-    INTERFACE
+    PUBLIC
     FILE_SET HEADERS
-    FILES ErrorCode.hpp ILogger.hpp
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
+    FILES
+        ErrorHandling/ErrorCode.hpp
+        ILogger/ILogger.hpp
+        FileLogger/FileLogger.hpp
 )
 
-target_compile_features(Logger INTERFACE cxx_std_23)
+target_compile_features(Logger PUBLIC cxx_std_17)
