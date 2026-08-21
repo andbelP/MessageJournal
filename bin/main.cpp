@@ -3,9 +3,26 @@
 #include <iostream>
 #include "ILogger/ILogger.hpp"
 #include "FileLogger/FileLogger.hpp"
+#include "LoggerFromConsole/LoggerFromConsole.hpp"
+#include "Utils/Parsing.hpp"
 
-int main(){
-    FileLogger logger("hahaha.txt", ImportanceLevel::kLow);
-    logger.Log("first log");
-    logger.Log("first log", ImportanceLevel::kHigh);
+int main(int argc, char** argv){
+
+    if(argc != 3){
+        std::cerr << "Invalid count of arguments. Use MainTesting <Name of log journal file> <Default importance level [HIGH]/[MEDIUM]/[LOW]>\n";
+        return EXIT_FAILURE;
+    }
+
+    auto default_importance_level_opt = ParseImportanceLevel(argv[2]);
+    if(!default_importance_level_opt.has_value()){
+        std::cerr << "Invalid importance level. Use .../MainTesting <Name of log journal file> <Default importance level [HIGH]/[MEDIUM]/[LOW]>\n";
+        return EXIT_FAILURE;
+    }
+
+    FileLogger file_logger(argv[1], default_importance_level_opt.value());
+
+    LoggerFromConsole logger_from_console(file_logger);
+
+    logger_from_console.Run();
+
 }
