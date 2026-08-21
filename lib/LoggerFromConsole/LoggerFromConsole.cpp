@@ -6,13 +6,13 @@
 namespace {
 
 std::optional<ImportanceLevel> ParseImportanceLevel(std::string_view value) {
-    if (value == "low") {
+    if (value == "[LOW]") {
         return ImportanceLevel::kLow;
     }
-    if (value == "medium") {
+    if (value == "[MEDIUM]") {
         return ImportanceLevel::kMedium;
     }
-    if (value == "high") {
+    if (value == "[HIGH]") {
         return ImportanceLevel::kHigh;
     }
     return std::nullopt;
