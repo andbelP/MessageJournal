@@ -4,7 +4,6 @@ target_sources(
     Logger
     PUBLIC
     FILE_SET HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
     FILES
         ErrorHandling/ErrorCode.hpp
         ILogger/ILogger.hpp
@@ -12,3 +11,15 @@ target_sources(
 )
 
 target_compile_features(Logger PUBLIC cxx_std_17)
+
+add_library(LoggerFromConsole LoggerFromConsole/LoggerFromConsole.cpp)
+
+target_sources(
+    LoggerFromConsole
+    PUBLIC
+    FILE_SET HEADERS
+    FILES LoggerFromConsole/LoggerFromConsole.hpp
+)
+
+target_link_libraries(LoggerFromConsole PUBLIC Logger)
+target_compile_features(LoggerFromConsole PUBLIC cxx_std_17)
