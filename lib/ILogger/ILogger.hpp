@@ -5,9 +5,9 @@
 #include "ErrorHandling/ErrorCode.hpp"
 
 enum class ImportanceLevel {
-    kHigh,
-    kMedium,
-    kLow
+    kHigh = 2,
+    kMedium = 1,
+    kLow = 0
 };
 
 class ILogger {

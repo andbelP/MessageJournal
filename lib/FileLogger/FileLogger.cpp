@@ -11,7 +11,7 @@ FileLogger::FileLogger(std::string file_name,
 ErrorCode FileLogger::Log(std::string_view message, ImportanceLevel level) {
     std::lock_guard lock(mutex_);
 
-    if (level > default_importance_level_) {
+    if (level < default_importance_level_) {
         return ErrorCode::kOk;
     }
 
@@ -42,6 +42,10 @@ ErrorCode FileLogger::Log(std::string_view message) {
 void FileLogger::SetDefaultImportanceLevel(ImportanceLevel level) {
     std::lock_guard lock(mutex_);
     default_importance_level_ = level;
+}
+
+bool FileLogger::JournalIsOpen() const noexcept {
+    return journal_.is_open();
 }
 
 std::string FileLogger::ImportanceLevelToString(

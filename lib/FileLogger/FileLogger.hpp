@@ -15,6 +15,8 @@ class FileLogger final : public ILogger {
     ErrorCode Log(std::string_view message) override;
     void SetDefaultImportanceLevel(ImportanceLevel level) override;
 
+    bool JournalIsOpen() const noexcept;
+
    private:
     static std::string ImportanceLevelToString(
         ImportanceLevel level) noexcept;
