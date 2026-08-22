@@ -76,10 +76,15 @@ void LoggerFromConsole::WorkerLoop() {
             tasks_.pop();
         }
 
+        ErrorCode error_code;
         if (task.level) {
-            logger_.Log(task.message, *task.level);
+            error_code = logger_.Log(task.message, *task.level);
         } else {
-            logger_.Log(task.message);
+            error_code = logger_.Log(task.message);
+        }
+
+        if(error_code != ErrorCode::kOk){
+            std::cerr << "Error while writing log;";
         }
     }
 }
