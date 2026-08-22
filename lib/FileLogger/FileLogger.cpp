@@ -50,7 +50,7 @@ bool FileLogger::JournalIsOpen() const noexcept {
 }
 
 std::string FileLogger::ImportanceLevelToString(
-    ImportanceLevel level) noexcept {
+    ImportanceLevel level) {
     switch (level) {
         case ImportanceLevel::kHigh:
             return "HIGH";
