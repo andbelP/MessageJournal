@@ -7,6 +7,9 @@ include(CTest)
 add_subdirectory(lib)
 add_subdirectory(bin)
 
-# if(BUILD_TESTING)
-#     add_subdirectory(tests)
-# endif()
+
+option(BUILD_TESTING "Build tests" ON)
+if(BUILD_TESTING)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
