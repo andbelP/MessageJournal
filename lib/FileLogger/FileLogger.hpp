@@ -23,5 +23,5 @@ class FileLogger final : public ILogger {
 
     std::ofstream journal_;
     ImportanceLevel default_importance_level_;
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
 };
