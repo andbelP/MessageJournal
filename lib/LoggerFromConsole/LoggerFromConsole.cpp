@@ -1,24 +1,8 @@
 #include "LoggerFromConsole/LoggerFromConsole.hpp"
+#include "Utils/Parsing.hpp"
 
 #include <iostream>
 #include <string_view>
-
-namespace {
-
-std::optional<ImportanceLevel> ParseImportanceLevel(std::string_view value) {
-    if (value == "[LOW]") {
-        return ImportanceLevel::kLow;
-    }
-    if (value == "[MEDIUM]") {
-        return ImportanceLevel::kMedium;
-    }
-    if (value == "[HIGH]") {
-        return ImportanceLevel::kHigh;
-    }
-    return std::nullopt;
-}
-
-}  // namespace
 
 void LoggerFromConsole::Run() {
     std::thread worker(&LoggerFromConsole::WorkerLoop, this);
