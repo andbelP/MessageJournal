@@ -18,9 +18,7 @@ class FileLogger final : public ILogger {
     bool JournalIsOpen() const noexcept;
 
    private:
-    static std::string ImportanceLevelToString(
-        ImportanceLevel level) noexcept;
-
+   
     std::ofstream journal_;
     ImportanceLevel default_importance_level_;
     mutable std::mutex mutex_;
