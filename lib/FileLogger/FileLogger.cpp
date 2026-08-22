@@ -44,7 +44,7 @@ void FileLogger::SetDefaultImportanceLevel(ImportanceLevel level) {
     default_importance_level_ = level;
 }
 
-bool FileLogger::JournalIsOpen() const noexcept {
+bool FileLogger::JournalIsOpen() const {
     std::lock_guard lock(mutex_); 
     return journal_.is_open();
 }
